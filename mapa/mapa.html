@@ -1,0 +1,285 @@
+<!DOCTYPE HTML>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="icon" href="./images/favicon_io/favicon.ico">
+  <link rel="stylesheet" href="./resources/ol.css">
+  <link rel="stylesheet" href="./resources/fontawesome-all.min.css">
+  <link rel="stylesheet" type="text/css" href="./resources/horsey.min.css">
+  <link rel="stylesheet" type="text/css" href="./resources/ol3-search-layer.js">
+  <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+  <link rel="stylesheet" href="./resources/qgis2web.css">
+  <title>Mapa Rio Guey</title>
+  <meta name="description" content="website description">
+  <meta name="keywords" content="website keywords, website keywords">
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252">
+  <link rel="stylesheet" type="text/css" id="theme" href="../css/style.css">
+  <!-- modernizr enables HTML5 elements and feature detects -->
+  <script type="text/javascript" src="../js/modernizr-1.5.min.js"></script>
+
+  <style>
+    html,
+    body {
+      background-color: #080808;
+    }
+
+    .ol-control>* {
+      background-color: #f8f8f8 !important;
+      color: #444444 !important;
+      border-radius: 0px;
+    }
+
+    .ol-attribution a,
+    .gcd-gl-input::placeholder,
+    .search-layer-input-search::placeholder {
+      color: #444444 !important;
+    }
+
+    .search-layer-input-search {
+      background-color: #f8f8f8 !important;
+    }
+
+    .ol-control>*:focus,
+    .ol-control>*:hover {
+      background-color: rgba(248, 248, 248, 0.7) !important;
+    }
+
+    .ol-control {
+      background-color: rgba(255, 255, 255, .4) !important;
+      padding: 2px !important;
+    }
+  </style>
+
+  <style>
+    #map {
+      width: 970px;
+      height: 750px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="main">
+    <header>
+      <div class="container__menu">
+        <div id="logo">
+          <div id="logo_text">
+            <!-- class="logo_colour", allows you to change the colour of the text -->
+            <h1><a href="../index.html">Atlas de Indicadores Ambientales | <span class="logo_colour">Cuenca Rio
+                  Guey</span></a></h1>
+            <h2>UCV Campus Maracay</h2>
+          </div>
+          <form method="post" action="#" id="search">
+            <input class="search" type="text" name="search_field" value="search....."
+              onclick="javascript: document.forms['search'].search_field.value=''"><input name="search" type="image"
+              style="float: right;border: 0; margin: 20px 0 0 0;" src="../images/search.png" alt="search" title="search">
+          </form>
+        </div>
+        <nav>
+          <ul class="sf-menu" id="nav">
+            <li class="current"><a href="../index.html">Inicio</a></li>
+            <li><a href="./mapa.html">Localización y Delimitación</a></li>
+            <li>
+              <a href="#">Clima</a>
+              <ul>
+                <li><a href="#">Estación Maracay CENIAP</a>
+                  <ul>
+                    <li><a href="#">Precipitación - ETO</a>
+                      <ul>
+                        <li><a href="../Clima/TotMensPrecCeniap.html">Totales Mensuales</a></li>
+                        <li><a href="#">Promedios Mensuales</a></li>
+                        <li><a href="#">Totales Anuales</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Temperatura TM - tm</a>
+                      <ul>
+                        <li><a href="#">Promedios Mensuales</a></li>
+                        <li><a href="#">Promedios Anuales</a></li>
+                        <li><a href="#">Temperatura Media Anual</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Radiación</a>
+                      <ul>
+                        <li><a href="#">Promedios Mensuales</a></li>
+                        <li><a href="#">Promedios Anuales</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Humedad</a>
+                      <ul>
+                        <li><a href="#">Totales Mensuales</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Estación Maracay FAgro</a>
+                  <ul>
+                    <li><a href="#">Precipitación</a>
+                      <ul>
+                        <li><a href="#">Promedios Mensuales</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Temperatura TM - tm</a>
+                      <ul>
+                        <li><a href="#">Promedios Mensuales</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">Humedad</a>
+                      <ul>
+                        <li><a href="#">Promedios Mensuales</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Estación La Trinidad</a>
+                  <ul>
+                    <li><a href="#">Precipitación</a>
+                      <ul>
+                        <li><a href="#">Promedios Mensuales</a></li>
+                        <li><a href="#">Promedios Anuales</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li><a href="#">Estación Castaño Cabecera</a>
+                  <ul>
+                    <li><a href="#">Precipitación</a>
+                      <ul>
+                        <li><a href="#">Promedios Anuales</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+
+              </ul>
+            </li>
+            <li><a href="../page.html">Incendios</a></li>
+            <li><a href="../another_page.html">Suelo</a></li>
+            <li><a href="../another_page.html">Relieve</a></li>
+            <li><a href="../another_page.html">Vegetación</a></li>
+            <li><a href="#">Otros Elementos</a>
+              <ul>
+                <li><a href="#">Mapas</a>
+                  <ul>
+                    <li><a href="#">Isoyetas</a></li>
+                    <li><a href="#">Precipitación Interpolada</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Galeria</a>
+                  <ul>
+                    <li><a href="#">Estaciones Climatologicas</a>
+                      <ul>
+                        <li><a href="#">FAgro</a></li>
+                        <li><a href="#">Maracay CENIAP</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div id="site_content">
+
+      <div class="content_mapa">
+        <h1>Localización y Delimitación de la Cuenca del Rio Guey</h1>
+        <div class="content_item">
+
+          <div id="map">
+            <div id="popup" class="ol-popup">
+              <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+              <div id="popup-content"></div>
+            </div>
+          </div>
+          <h1>Fuente: Elaboración propia (2023)</h1>
+          <br>
+          <br>
+          <h2>FACULTAD DE AGRONOMÍA</h2>
+          <br>
+          <p>En la resolución del 13 de octubre de 1937, fecha en la que fue creada, por disposición del presidente de
+            la República, General Eleazar López Contreras, la Escuela Superior de Agricultura y Zootecnia, adscrita al
+            Ministerio de Agricultura y Cría, estando ésta ubicada en la Hacienda Sosa, en el Valle, Caracas, donde
+            comienza a laborar la Estación Experimental de Agricultura y Zootecnia del Distrito Federal. Hacia fines de
+            1940, por efecto de la presión urbanística que vivía Caracas, es trasladada a Maracay, a las haciendas El
+            limón y la Trinidad. Luego es adscrita a la Universidad Central de Venezuela, denominándose Facultad de
+            Ingeniería Agronómica en el año de 1945, mediante la promulgación del estatuto orgánico de las universidades
+            nacionales. Pero es en el año de 1948, cuando también viene a formar parte de la administración de la
+            Universidad Central de Venezuela. En 1952, cuando la Universidad Central de Venezuela es intervenida, se
+            denominó Facultad de Agricultura, y se altera su organización original de semestre al sistema de períodos
+            anuales.
+            En 1958, se le cambia el nombre por Facultad de Agronomía, retorna a su organización original semestral, y
+            se inicia un firme y sostenido desarrollo hasta el presente, efectuandose reformas en la estructura de la
+            facultad, mediante la creación de Departamentos, Institutos, Núcleos y Estaciones Experimentales.
+            Esta Institución ha estado dirigida por distinguidos profesores, encontrándose como iniciador fundador al
+            Prof. Augusto Bonazzi y como primer Decano Fernando Polanco.
+            Los Profesores que han ejercido funciones como Decano son:
+          <ul>Fernando Polanco.</ul>
+          <ul>Víctor Manuel Badillo.</ul>
+          <ul>Alejandro Rodríguez Landaeta.</ul>
+          <ul>Pompeyo Ríos.</ul>
+          <ul>Francisco Fernández Yépez.</ul>
+          <ul>Manuel Vicente Benezra.</ul>
+          <ul>Mauro Fernández.</ul>
+          <ul>José Rodríguez Brito.</ul>
+          <ul>Arnaldo Badillo.</ul>
+          <ul>Pedro Vega Ortega.</ul>
+          <ul>Santiago Clavijo.</ul>
+          <ul>Freddy Gil González.</ul>
+          <ul>Franklin Chacin Lugo.</ul>
+          <ul>Leonardo Taylhardat</ul>
+          </p>
+          <br>
+          <p><b>fuente:</b>Página UCV FAgro - <a href="http://www.ucv.ve/organizacion/facultades/facultad-de-agronomia-ucv/acerca-de-la-facultad/resena-historica.html" target="_blank">http://www.ucv.ve/organizacion/facultades/facultad-de-agronomia-ucv/acerca-de-la-facultad/resena-historica.html</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <p><a href="../index.html">Inicio</a> | <a href="../mapa/mapa.html">Localización y Delimitación</a> | <a
+          href="../page.html">Incendios</a> | <a href="../another_page.html">Suelo</a> | <a
+          href="../another_page.html">Vegetación</a>
+      </p>
+      <p>Copyright &copy; CSS3_one | <a href="http://www.css3templates.co.uk">design from
+          css3templates.co.uk</a><!--%@##-->
+      <div style="text-align: center; font-size: 0.75em;">Dise�o descargado desde <a
+          href="http://www.misplantillas.com/">plantillas web gratis</a>.</div><!--##@%--></p>
+    </footer>
+  </div>
+
+  <script src="./resources/qgis2web_expressions.js"></script>
+  <script src="./resources/polyfills.js"></script>
+  <script src="./resources/functions.js"></script>
+  <script src="./resources/ol.js"></script>
+  <script src="http://cdn.polyfill.io/v2/polyfill.min.js?features=Element.prototype.classList,URL"></script>
+  <script src="./resources/horsey.min.js"></script>
+  <script src="./resources/ol3-search-layer.js"></script>
+  <script src="./resources/ol-layerswitcher.js"></script>
+  <script src="./layers/CuencaRioGuey_1.js"></script>
+  <script src="./layers/DepartamentoseInstitutos_2.js"></script>
+  <script src="./styles/CuencaRioGuey_1_style.js"></script>
+  <script src="./styles/DepartamentoseInstitutos_2_style.js"></script>
+  <script src="./layers/layers.js" type="text/javascript"></script>
+  <script src="./resources/Autolinker.min.js"></script>
+  <script src="./resources/qgis2web.js"></script>
+
+
+
+  <!-- javascript at the bottom for fast page loading -->
+  <script type="text/javascript" src="../js/jquery.js"></script>
+  <script type="text/javascript" src="../js/jquery.easing-sooper.js"></script>
+  <script type="text/javascript" src="../js/jquery.sooperfish.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('ul.sf-menu').sooperfish();
+    });
+  </script>
+</body>
+
+</html>
