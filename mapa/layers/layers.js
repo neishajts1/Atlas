@@ -24,7 +24,7 @@ var lyr_CuencaRioGuey_1 = new ol.layer.Vector({
                 source:jsonSource_CuencaRioGuey_1, 
                 style: style_CuencaRioGuey_1,
                 popuplayertitle: "Cuenca Rio Guey",
-                interactive: true,
+                interactive: false,
                 title: '<img src="styles/legend/CuencaRioGuey_1.png" /> Cuenca Rio Guey'
             });
 var format_DepartamentoseInstitutos_2 = new ol.format.GeoJSON();
@@ -59,7 +59,7 @@ lyr_DepartamentoseInstitutos_2.set('fieldAliases', {'photo': 'Foto', 'filename':
 lyr_CuencaRioGuey_1.set('fieldImages', {'Id': 'Hidden', 'Area': 'TextEdit', });
 lyr_DepartamentoseInstitutos_2.set('fieldImages', {'photo': 'ExternalResource', 'filename': 'Hidden', 'directory': 'Hidden', 'altitude': 'TextEdit', 'direction': 'Hidden', 'rotation': 'Hidden', 'longitude': 'TextEdit', 'latitude': 'TextEdit', 'timestamp': 'Hidden', 'Nombre': 'TextEdit', 'Numero': 'TextEdit', });
 lyr_CuencaRioGuey_1.set('fieldLabels', {'Area': 'no label', });
-lyr_DepartamentoseInstitutos_2.set('fieldLabels', {'photo': 'no label', 'altitude': 'inline label - always visible', 'longitude': 'inline label - always visible', 'latitude': 'inline label - always visible', 'Nombre': 'inline label - always visible', 'Numero': 'inline label - always visible', });
+lyr_DepartamentoseInstitutos_2.set('fieldLabels', {'photo': 'no label', 'altitude': 'inline label - always visible', 'longitude': 'inline label - always visible', 'latitude': 'inline label - always visible', 'Nombre': 'inline label - always visible', 'Numero': 'hidden field', });
 lyr_DepartamentoseInstitutos_2.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
